@@ -1,7 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("Backend template is running...")
+	r := gin.Default()
+
+	r.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status": "running",
+		})
+	})
+	fmt.Println("Backend is running...")
+	r.Run(":8080")
+
+	
+
 }
