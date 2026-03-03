@@ -3,20 +3,19 @@ package main
 import (
 	"fmt"
 
+	"github.com/Kedarkashid/go-backend-template/database"
+	"github.com/Kedarkashid/go-backend-template/routes"
+
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
 
-	r.GET("/health", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"status": "running",
-		})
-	})
+	database.Connect()
+	routes.SetupRoutes(r)
+
 	fmt.Println("Backend is running...")
 	r.Run(":8080")
-
-	
 
 }
