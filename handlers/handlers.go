@@ -31,3 +31,12 @@ func UserRegistrationHandler(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, gin.H{"message": "User Registered Successfully"})
 }
+
+func GetUsersHandler(c *gin.Context) {
+	result, err := service.FetchAllUsersService()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch users"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"users": result})
+}

@@ -8,4 +8,5 @@ import (
 func SetupRoutes(r *gin.Engine) {
 	r.GET("/health", handlers.HealthCheckHandler)
 	r.POST("/register", handlers.UserRegistrationHandler)
+	r.GET("/get-users", handlers.GetUsersHandler)
 }
